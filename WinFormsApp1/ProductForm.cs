@@ -36,7 +36,6 @@ namespace WinFormsApp1
         {
             try
             {
-                // Валидация названия
                 if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
                     MessageBox.Show("Введите название товара", "Ошибка валидации",
@@ -45,7 +44,6 @@ namespace WinFormsApp1
                     return;
                 }
 
-                // Валидация количества
                 if (!int.TryParse(txtQuantity.Text, out int quantity))
                 {
                     MessageBox.Show("Введите корректное целое число для количества", "Ошибка валидации",
@@ -64,7 +62,6 @@ namespace WinFormsApp1
                     return;
                 }
 
-                // Валидация цены
                 if (!decimal.TryParse(txtPrice.Text, out decimal price))
                 {
                     MessageBox.Show("Введите корректную цену (число)", "Ошибка валидации",
@@ -83,7 +80,6 @@ namespace WinFormsApp1
                     return;
                 }
 
-                // Валидация категории
                 if (string.IsNullOrWhiteSpace(txtCategory.Text))
                 {
                     MessageBox.Show("Введите категорию товара", "Ошибка валидации",
@@ -92,7 +88,6 @@ namespace WinFormsApp1
                     return;
                 }
 
-                // Создание объекта товара
                 Product = new Product
                 {
                     Name = txtName.Text.Trim(),
@@ -117,7 +112,6 @@ namespace WinFormsApp1
             this.Close();
         }
 
-        // Дополнительный метод для очистки формы
         private void ClearForm()
         {
             txtName.Clear();
@@ -126,10 +120,8 @@ namespace WinFormsApp1
             txtCategory.Clear();
         }
 
-        // Обработчик для удобства - нажатие Enter в полях ввода
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Разрешаем только цифры и клавишу Backspace
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
@@ -138,13 +130,11 @@ namespace WinFormsApp1
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Разрешаем цифры, точку и Backspace
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
             }
 
-            // Разрешаем только одну точку
             if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
             {
                 e.Handled = true;
