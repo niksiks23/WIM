@@ -95,7 +95,6 @@ namespace WinFormsApp1
             btnOk_Click(this, EventArgs.Empty);
         }
 
-        // Дополнительный метод для установки максимального количества (для списания)
         public void SetMaxQuantity(int maxQuantity)
         {
             if (operation == "Списание")
@@ -103,7 +102,6 @@ namespace WinFormsApp1
                 var toolTip = new ToolTip();
                 toolTip.SetToolTip(txtQuantity, $"Максимальное доступное количество: {maxQuantity}");
 
-                // Можно добавить валидацию при вводе
                 txtQuantity.TextChanged += (s, e) =>
                 {
                     if (int.TryParse(txtQuantity.Text, out int value) && value > maxQuantity)
@@ -122,10 +120,8 @@ namespace WinFormsApp1
             }
         }
 
-        // Добавляем компонент для отображения ошибок (нужно добавить в дизайнер)
         private System.Windows.Forms.ErrorProvider errorProvider1;
 
-        // Дополнительная инициализация компонентов (если нет в дизайнере)
         private void InitializeAdditionalComponents()
         {
             errorProvider1 = new System.Windows.Forms.ErrorProvider();
