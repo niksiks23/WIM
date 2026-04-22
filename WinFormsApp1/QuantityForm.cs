@@ -16,13 +16,10 @@ namespace WinFormsApp1
             this.operation = operation;
             this.productName = productName;
 
-            // Устанавливаем текст операции
             lblOperation.Text = operation;
 
-            // Устанавливаем название товара
             lblProductName.Text = $"\"{productName}\"";
 
-            // Фокус на поле ввода при загрузке
             this.Shown += (s, e) => txtQuantity.Focus();
         }
 
@@ -30,7 +27,6 @@ namespace WinFormsApp1
         {
             try
             {
-                // Валидация ввода
                 if (string.IsNullOrWhiteSpace(txtQuantity.Text))
                 {
                     MessageBox.Show("Введите количество", "Ошибка валидации",
@@ -57,7 +53,6 @@ namespace WinFormsApp1
                     return;
                 }
 
-                // Для операции списания можно добавить дополнительную проверку
                 if (operation == "Списание")
                 {
                     var result = MessageBox.Show($"Вы уверены, что хотите списать {quantity} шт. товара \"{productName}\"?",
@@ -86,10 +81,8 @@ namespace WinFormsApp1
             this.Close();
         }
 
-        // Обработчик для ограничения ввода только цифрами
         private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Разрешаем только цифры и клавишу Backspace
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
