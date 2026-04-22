@@ -89,7 +89,6 @@ namespace WinFormsApp1
             }
         }
 
-        // Обработчик для быстрого добавления типовых количеств
         private void OnQuantityButtonClick(int quantity)
         {
             txtQuantity.Text = quantity.ToString();
